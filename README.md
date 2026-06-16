@@ -72,4 +72,10 @@
 > *(作者保留區塊：之後將補上開發這個醫檢師刷題系統的初衷、遇到的痛點，以及未來可能的擴充計畫等心得。)*
 
 ---
+
+## 🙏 致謝與參考資料 (Acknowledgments)
+
+本專案的誕生，特別感謝開源社群的貢獻。在系統開發初期，我們參考了 [pofeng/exams_tw](https://github.com/pofeng/exams_tw) 專案中的程式碼架構與歷屆考題資料處理邏輯。感謝原作者的開源精神，為本系統的資料清洗與題庫建立提供了寶貴的啟發與基礎！
+
+---
 *Developed with ❤️ for Medical Technologists.*
