@@ -1,0 +1,397 @@
+﻿ 1  
+專門職業及技術人員高等考試醫事檢驗師考試各應試科目命題大綱暨參考用書 
+（自 114 年第一次專門職業及技術人員高等考試醫事檢驗師考試開始實施） 
+中華民國 101 年 3 月 16 日考選部選專三字第 1013300325 號公告修正 
+中華民國 104 年 4 月 10 日考選部選專四字第 1043300492 號公告修正(修正臨床生化學參考用書) 
+中華民國 105 年 9 月 14 日考選部選專四字第 1053301688 號公告修正(修正「臨床生理學與病理學」
+之「臨床生理學」部分參考用書及「病理學」部分命題大綱暨參考用書、「微生物學與臨床微生物學
+（包括細菌與黴菌）」參考用書、「臨床血清免疫學與臨床病毒學」之「臨床病毒學」部分命題大綱) 
+中華民國 107 年 4 月 13 日考選部選專四字第 1073300650 號公告修正(修正「臨床血液學與血庫
+學」、「醫學分子檢驗學與臨床鏡檢學(包括寄生蟲學)」、「生物化學與臨床生化學」參考用書) 
+中華民國 109 年 4 月 9 日考選部選專四字第 1093300501 號公告修正(修正「臨床生理學與病理學」
+之「病理學」部分參考用書) 
+中華民國 112 年 10 月 12 日考選部選專四字第 1123301702 號公告修正(修正「醫學分子檢驗學與臨
+床鏡檢學(包括寄生蟲學)」之「臨床鏡檢學(包括寄生蟲學)」部分參考用書) 
+中華民國113 年12 月4 日考選部選專四字第1133301659號公告修正（「醫學分子檢驗學」及「微生物
+學與臨床微生物學（包括細菌與黴菌）科目命題大綱及參考用書」、「病理學」、「臨床血液學與血庫
+學」、「生物化學與臨床生化學」、「臨床血清免疫學與臨床病毒學」科目參考用書) 
+專業科目數  共計６科目 
+業務範圍及  
+核心能力  
+一、一般臨床檢驗。 
+二、臨床生化檢驗。 
+三、臨床血清檢驗。 
+四、臨床免疫檢驗。 
+五、臨床血液檢驗。 
+六、輸血檢驗及血庫作業。 
+七、臨床微生物檢驗。 
+八、臨床生理檢驗。 
+九、醫學分子檢驗。 
+十、醫事檢驗業務之諮詢。 
+十一、臨床檢驗試劑之諮詢。 
+十二、其他經中央衛生主管機關認可之醫事檢驗業務。 
+編
+號 科目名稱  命題大綱  參考用書  
+一 臨床生理學與
+病理學 
+一、臨床生理學 
+（一）心電圖 
+（二）神經學檢查(包括腦波檢查、睡眠
+相關的生理學檢查及肌電圖) 
+（三）血液氣體分析 
+（四）呼吸功能檢查 
+（五）超音波檢查 
+（六）綜合性試題 
+二、病理學 
+（一）細胞傷害、發炎與修復 
+（二）腫瘤概論 
+（三）遺傳和發育疾病 
+（四）物理和化學傷害及營養疾病 
+（五）感染 
+（六）免疫疾病 
+臨床生理學 
+1.書 名：臨床生理學 
+作 者：何敏夫 
+出版社：合記出版社 
+2.書 名：The Only EKG Book You'll 
+Ever Need 
+作 者：Malcolm S. Thaler MD 
+出版社：Wolters Kluwer 
+3.書 名：臨床生理學 
+作 者：宋茂林等著 
+出版社：合記出版社 
+ 
+病理學 
+1.書 名：Robbins Basic Pathology 
+作 者：Vinay Kumar, Abul K.          
+ 2  
+（七）系統疾病(一)： 
+1.心血管 
+2.呼吸(含頭、頸部) 
+3.造血 
+4.乳房及女性生殖 
+5.內分泌 
+（八）系統疾病(二)： 
+1.消化肝膽 
+2.腎臟泌尿及男性生殖 
+3.骨骼及軟組織 
+4.神經 
+Abbas, Jon Ｃ. Aster 
+出版社：W.B. Saunders 
+2.書 名：病理學 
+作 者：王志生等編著 
+出版社：新文京開發出版股份有限          
+公司 
+3.書 名：最新病理學 
+作 者：曾歧元編著 
+出版社：匯華圖書出版股份有限公司 
+4. 書 名：Robbins & Cotran 
+Pathologic Basis of Disease 
+作 者：Kumar 
+出版社：Elsevier 
+二 臨床血液學與
+血庫學 
+一、紅血球領域 
+（一）紅血球的生成、形態及其生理功能 
+（二）紅血球相關疾病及其實驗室診斷方
+法與品質管制。 
+二、白血球領域 
+（一）白血球的生成、形態及其生理功能 
+（二）白血球相關疾病及其實驗室診斷方
+法與品質管制。 
+三、血液凝固領域 
+（一）血小板的生成、形態及其生理功
+能、血液凝固學及溶血機制。 
+（二）血液凝固相關疾病及其實驗室診斷
+方法與品質管制。 
+四、血庫領域 
+紅血球抗原、血液成分之製備與貯
+存、輸血前檢查及輸血後反應、血庫
+的品管作業。 
+1.書 名：Wintrobe's Clinical 
+Hematology 
+作 者：John P. Greer, et al. 
+出版社：Wolters Kluwer  
+2.書 名：Hoffbrand’s Essential 
+Haematology 
+作 者：A.V. Hoffbrand, P.A.H. 
+Moss  
+出版社：Wiley-Blackwell  
+3.書 名：Hemostasis and Thrombosis: 
+Basic Principles and Clinical 
+Practice 
+作 者：Victor J. Marder 
+出版社：Lippincott Williams & 
+Wilkins 
+4.書 名：Modern Blood Banking and 
+Transfusion Practices 
+作 者：Denise M. Harmening  
+出版社：Philadelphia: F.A. Davis 
+5.書 名：新編輸血醫學 
+作 者：孫建峰 
+出版社：合記出版社 
+6.書 名：輸血醫學 
+作 者：林媽利 
+出版社：五南 
+7.書 名：Clinical Hematology and 
+Fundamentals of Hemostasis 
+作 者：Denise M. Harmening 
+出版社：F.A. Davis Company 
+8.書 名：Hematology：Basic 
+Principles and Practice 
+作 者：Ronald Hoffman et al. 
+出版社：Elsevier Health Sciences  
+ 3  
+三 
+醫學分子檢驗
+學與 臨床鏡檢
+學(包括寄生蟲
+學) 
+一、醫學分子檢驗學 
+(一)基礎分子生物學 
+(二)分子檢驗技術(含實驗室開發檢測)  
+(三)分子檢驗的品質管理 (含生資分析) 
+(四)感染症的分子檢驗 (病原體檢測) 
+1.細菌/黴菌的分子檢測 
+2.病毒之分子檢測 
+(五)人類疾病的分子檢測 
+1.遺傳疾病相關基因檢測 
+2.腫瘤疾病相關基因檢測 
+3.藥物相關基因檢測 
+二、臨床鏡檢學 
+(一)顯微鏡原理與操作 
+(二)尿液常規檢查(不包含結石、代謝疾
+病)  
+(三)糞便常規檢查 
+(四)痰液一般鏡檢 
+(五)腦脊髓液檢查 
+(六)穿刺液(含胸水、腹水及心包液)檢查 
+(七)滑膜液檢查 
+(八)精液檢查 
+(九)懷孕試驗 
+(十)醫用寄生蟲檢查 
+(十一)綜合性試題 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+醫學分子檢驗 
+1.書 名：醫學分子檢驗 
+作 者：吳俊忠等著 
+出版社：五南圖書出版有限公司 
+2.書 名：Molecular Diagnostics: 
+Fundamentals, Methods & 
+Clinical Applications 
+作 者：Lela Buckingham, 
+Maribeth Flaws 
+出版社：F. A. Davis Company  
+3.書 名：Molecular Biology of the 
+Gene 
+作 者：James D.Watson et al. 
+出版社：Benjamin Cummings 
+4.書 名：Molecular Diagnostics 
+作 者：George P. Patrinos and 
+Wilhem Ansorge 
+出版社：Academic Press 
+5. 書 名：Tietz Fundamentals of 
+Clinical Chemistry and 
+Molecular Diagnostics 
+作 者：Nader Rifai, et al 
+出版社：Elsevier 
+ 
+臨床鏡檢學 
+1.書 名：Henry's Clinical Diagnosis 
+and Management by 
+Laboratory Methods 
+作 者：Richard A. McPherson, 
+Matthew R. Pincus 
+出版社：Saunders  
+2.書 名：Urinalysis and Body Fluids 
+作 者：Strasinger, Susan King；Di 
+Lorenzo, Marjorie Schaub 
+出版社：F. A. Davis Company 
+3.書 名：臨床鏡檢學  
+作 者：曾永德 
+出版社：藝軒圖書公司 
+4.書 名：Markell and V oge's Medical 
+Parasitology  
+作 者：David T. John, William A. 
+Petri,Jr. 
+出版社：Saunders Elsevier 
+5.書 名：臨床鏡檢學圖譜  
+作 者：朱蘇煜 
+出版社：力大圖書 
+ 4  
+四 
+微生物學 與臨
+床微生物學
+( 包括細菌與
+黴菌) 
+一、總論 
+二、革蘭氏陽性球菌及桿菌 
+三、革蘭氏陰性球菌及桿菌 (腸內菌及非
+葡萄糖醱酵菌)、挑剔性細菌 
+四、厭氧菌、螺旋菌、披衣菌、黴漿菌、
+立克次體 
+五、感染症與院內感染 
+六、黴菌 
+七、抗微生物製劑與藥敏試驗(細菌、黴菌) 
+八、綜合性試題 
+ 
+1.書 名：Bailey & Scott's  Diagnostic 
+Microbiology  
+作 者：Patricia M. Tille 
+出版社：St. Louis: Mosby Elsevier 
+2.書 名：Koneman's Color Atlas and 
+Textbook of Diagnostic 
+Microbiology  
+作 者：Gary W. Procop et al. 
+出版社：Jones & Bartlett Learning  
+3.書 名：Textbook of Diagnostic 
+Microbiology 
+作 者：Connie R. Mahon, Donald C. 
+Lehman, George Manuselis 
+出版社：W. B. Saunders Company 
+4.書 名：臨床微生物學-細菌及黴菌
+學 
+作 者：吳俊忠等著 
+出版社：五南圖書出版公司 
+五 生物化學與臨
+床生化學 
+一、基本概念，臨床檢驗儀器分析 
+二、品質管理，參考值與數據判讀 
+三、胺基酸與蛋白質、氮代謝物及腎臟機
+能 
+四、醣類、脂質及脂蛋白 
+五、電解質與微量元素 
+六、血液氣體分析及酸鹼平衡 
+七、臨床酵素學、肝臟機能、心臟標誌  
+八、腫瘤標誌、內分泌、維生素 
+九、治療藥物監測、毒物學  
+十、綜合性試題 
+ 
+ 
+1.書  名：Tietz Fundamentals of 
+Clinical Chemistry and 
+Molecular Diagnostics 
+作  者：Nader Rifai 
+出版社：Elsevier 
+2.書  名：Lehninger Principles of 
+Biochemistry 
+作  者：David L. Nelson and Michael 
+M. Cox 
+出版社：Macmillan  
+3.書  名：Clinical Chemistry: 
+Principles, Techniques, and 
+Correlations 
+作  者：Michael L. Bishop, Edward 
+P. Fody, Carleen Van Siclen, 
+James, March Mistler, 
+Michelle Moy 
+出版社：Jones & Bartlett Learning  
+4. 書 名：臨床生化學(三版) 
+作 者：張懿欣總校閱 
+出版社：華格那 
+5. 書 名：Biochemistry 
+作 者：Campbell, Farrell, Mcdougal 
+出版社：Cengage Learning 
+六 
+臨床血清免疫
+學與臨床病毒
+學 
+一、臨床血清免疫學 
+（一）基礎免疫學  
+（二）實驗室測試免疫法  
+（三）急性發炎蛋白 
+（四）微生物感染血清學 
+臨床血清免疫學 
+1.書  名：Kuby Immunology 
+作  者：Jenni Punt, Sharon Stranford 
+出版社：New York：W.H. Freeman 
+2.書  名：Immunology and Serology in 
+ 5  
+（五）過敏反應及測試法 
+（六）自體免疫疾病及自體抗體之測試 
+（七）人類組織型及器官移植免疫學 
+（八）免疫缺陷 
+（九）腫瘤免疫學、免疫療法及疫苗 
+（十）綜合性試題 
+二、臨床病毒學 
+（一）臨床病毒學總論 
+（二）臨床病毒學個論 
+DNA 病毒及蛋白子(Prion)包括： 
+１、腺病毒科 
+２、
+ 疹病毒科 
+３、痘病毒科 
+４、肝炎病毒科 
+５、DNA 小病毒科  
+６、乳多瘤病毒科 
+７、蛋白子(Prion)及其他病毒 
+RNA 病毒包括： 
+１、小RNA 病毒科  
+２、黃病毒科 
+３、正黏液病毒科 
+４、副黏液病毒科 
+５、披衣病毒科(Togaviridae) 
+６、呼吸道腸道孤兒病毒科 
+７、絲狀病毒科  
+８、反轉錄病毒科 
+９、本洋病毒科  
+１０、冠狀病毒科 
+１１、其他病毒 
+ 
+Laboratory Medicine 
+作  者：Mary Louise Turgeon 
+出版社：Mosby Elsevier 
+3.書  名：Janeway's Immunobiology 
+作  者：Kenneth M. Murphy, Casey 
+Weaver, Leslie J. Berg 
+出版社：Garland Science,Taylor & 
+        Francis Group,LLc. 
+4.書  名：Clinical Immunology and 
+Serology: A Laboratory 
+Perspective 
+作  者：Christine D. Stevens. 
+出版社：F. A. Davis Company 
+5.書  名：Medical Immunology 
+作  者：T.G. Parslow et al. 
+出版社：McGraw-Hill 
+ 
+臨床病毒學 
+1.書  名：Clinical Virology Manual 
+作  者：Michael J. Loeffelholz, 
+Richard L. Hodinka, Stephen 
+A. Young, Benjamin A. 
+Pinsky 
+出版社：ASM Press 
+2.書  名：Manual of Clinical 
+Microbiology 
+作  者：Patrick R., Ph.D. Murray, 
+Ellen Jo Baron, James H. 
+Jorgensen, Marie Louise 
+Landry, Michael A. Pfaller 
+出版社：ASM Press 
+3.書  名：Fields Virology 
+作  者：David M. Knipe and Peter M 
+Howley 
+出版社：Wolters Kluwer/ Lippincott 
+Williams & Wilkins 
+4.書  名：Medical Microbiology 
+作  者：Patrick R. Murray, Ken S. 
+Rosenthal, Michael A. Pfaller 
+出版社：Mosby Elsevier 
+備註  表列各應試科目命題大綱及參考用書為考試命題範圍之例示，惟實際試題並不完
+全以此為限，仍可命擬相關之綜合性試題。 
+ 
+

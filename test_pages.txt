@@ -1,0 +1,342 @@
+﻿--- PAGE 0 ---
+類科名稱：醫事檢驗師
+115年第一次專門職業及技術人員高等考試醫師牙醫師中醫師藥師考試分階段考試、醫事
+檢驗師、醫事放射師、物理治療師考試
+科目名稱：微生物學與臨床微生物學（包括細菌與黴菌）(試題代號：4308)
+題　　數：80題
+測驗式試題標準答案
+考試名稱：
+標準答案：
+題號
+答案Ｄ
+Ｄ
+Ｃ
+Ａ
+Ａ
+Ｂ
+Ｂ
+Ｂ
+Ｃ
+Ｂ
+Ｂ
+Ｄ
+Ａ
+Ａ
+Ｄ
+Ｂ
+Ｂ
+Ｂ
+Ｂ
+Ａ
+題號
+答案Ｃ
+Ａ
+Ａ
+Ｃ
+Ａ
+Ｂ
+Ｄ
+Ｄ
+Ｃ
+Ｃ
+Ｂ
+Ｄ
+Ｂ
+Ｂ
+Ｂ
+Ｃ
+Ｂ
+Ｂ
+Ｃ
+Ｄ
+題號
+答案Ａ
+Ａ
+Ｂ
+Ｄ
+Ａ
+Ａ
+Ｄ
+Ｃ
+Ａ
+Ｃ
+Ａ
+Ａ
+Ｃ
+Ｃ
+Ａ
+Ａ
+Ａ
+Ａ
+Ｂ
+Ｃ
+題號
+答案Ａ
+Ａ
+Ａ
+Ｄ
+Ｂ
+Ｂ
+Ｄ
+Ｂ
+Ｂ
+Ｂ
+Ｄ
+Ｃ
+Ａ
+Ｂ
+Ｂ
+Ａ
+Ｄ
+Ｂ
+Ｂ
+Ａ
+備　　註：
+題號
+答案
+01
+02
+03
+04
+05
+06
+07
+08
+09
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+
+--- PAGE 1 ---
+115 年第一次專門職業及技術人員高等考試醫師牙醫師中醫師藥師考
+試分階段考試、醫事檢驗師、醫事放射師、物理治療師考試 
+代  號：4308 
+類科名稱：醫事檢驗師 
+科目名稱：微生物學與臨床微生物學（包括細菌與黴菌） 
+考試時間：1 小時  
+座號：___________
+※注意：本試題禁止使用電子計算器 
+※本試題為單一選擇題，請選出一個正確或最適當答案。 
+ 
+1.有關甲基藍染色（methylene blue stain）的敘述，下列何者最不適當？ 
+ 
+A.可用於染Haemophilus influenzae 
+B.可用於染Neisseria meningitidis 
+C.菌體染色後呈現深藍色 
+D.背景為淺綠色 
+2.有關實驗室常用的滅菌（sterilization）方法，下列敘述何者最不適當？ 
+ 
+A.incineration 可去除prions 
+B.moist heat 比dry heat 所需時間較短 
+C.ionizing radiation 可用於消毒導管與手套 
+D.HEPA filter 可用於去除空氣中所有微生物 
+3.下列何者不是用於Salmonella 和Shigella 的增菌培養基（enrichment medium）？ 
+ 
+A.GN broth 
+B.selenite broth 
+C.trypticase soy broth 
+D.tetrathionate broth 
+4.有關細菌線毛（fimbriae）的敘述，下列何者正確？ 
+ 
+A.主要由pilin 蛋白所構成 
+B.一般線毛主要功能為接合生殖 
+C.為細菌於液體中的主要運動小器官 
+D.比鞭毛更粗且長 
+5.下列何種photochromogenic 的nontuberculous mycobacteria（NTM）最常在HIV 患者引發肺部疾病？ 
+ A.Mycobacterium kansasii 
+B.Mycobacterium haemophilum 
+
+--- PAGE 2 ---
+C.Mycobacterium avium complex 
+D.Mycobacterium chelonae 
+ 
+6.下列Burkholderia spp.中，何者通常不具有運動性？ 
+ 
+A.B. pseudomallei 
+B.B. mallei 
+C.B. cepacia complex 
+D.B. gladioli 
+ 
+7.下列Haemophilus spp.，何者與性接觸傳播有關，會引起軟性下疳（chancroid）？ 
+ 
+A.H. haemolyticus 
+B.H. ducreyi 
+C.H. aphrophilus 
+D.H. segnis 
+ 
+8.最常見污染牛肉漢堡，引起胃腸道感染之細菌為何？ 
+ 
+A.Streptococcus pyogenes 
+B.Escherichia coli O157:H7 
+C.Vibrio cholerae 
+D.Enterococcus faecalis 
+ 
+9.一個具有臨床意義的良好痰液檢體，在低倍顯微鏡（100X）下觀察時主要常見於下列何種情況？ 
+ 
+A.中性球（neutrophil）＜25，鱗狀上皮細胞＜10 
+B.中性球（neutrophil）＞25，鱗狀上皮細胞＞10 
+C.中性球（neutrophil）＞25，鱗狀上皮細胞＜10 
+D.中性球（neutrophil）＜25，鱗狀上皮細胞＞25 
+10.下列那些細菌通常可引起腹瀉？①Klebsiella spp. ②Salmonella spp. ③Campylobacter spp. ④
+Vibrio spp. ⑤Shigella spp. ⑥Helicobacter pylori ⑦Enterococcus spp. 
+ 
+A.①③⑤⑦ 
+B.②③④⑤ 
+C.①②③④⑥ 
+D.①②④⑤⑦ 
+11.尿液細菌培養，使用0.001 毫升接種環取樣，接種於5％綿羊血agar。隔夜培養後，發現單一形態之100 顆
+菌落。一般情況下，則此尿液細菌培養之後續操作或處置為何？ 
+
+--- PAGE 3 ---
+ 
+A.發布疑似污染菌之報告 
+B.執行該菌落的鑑定和藥敏試驗 
+C.發布泌尿生殖系統的正常菌群之報告 
+D.重新採檢，再重做 
+ 
+12.Bacillus 菌屬中菌落扁平且具有假根狀（rhizoid）外觀者，最可能是下列何菌？ 
+ 
+A.Bacillus cereus 
+B.Bacillus thuringiensis 
+C.Bacillus anthracis 
+D.Bacillus mycoides 
+ 
+13.感染Mycobacterium leprae 的病程發展過程中，下列何種組織的病變，在silent phase 時期最常見？ 
+ 
+A.皮膚 
+B.腦部 
+C.眼部 
+D.肺部 
+ 
+14.用於預防結核病的卡介苗（Bacillus Calmette-Guérin, BCG），是以何種分枝桿菌的減毒菌株製成？ 
+ 
+A.Mycobacterium bovis 
+B.Mycobacterium tuberculosis 
+C.Mycobacterium avium 
+D.Mycobacterium smegmatis 
+ 
+15.快速生長的非結核分枝桿菌（rapidly growing nontuberculous mycobacteria）屬於Runyon 分類系統中那
+一類？  
+ 
+A.group Ⅰ  
+B.group Ⅱ 
+C.group Ⅲ 
+D.group Ⅳ 
+16.下列何者不是目前治療結核病主要的一線藥物？ 
+ 
+A.rifampicin（RMP） 
+B.kanamycin（KAN） 
+C.isoniazid（INH） 
+D.ethambutol（EMB） 
+
+--- PAGE 4 ---
+17.對萬古黴素（vancomycin）具抗藥性之金黃色葡萄球菌，其主要抗藥機轉為何？  
+ 
+A.產生分解萬古黴素的酵素 
+B.改變細胞壁肽聚醣前驅物D-alanyl-D-alanine 和vancomycin 的結合位 
+C.改變細胞膜通透性 
+D.合成將萬古黴素打出胞外的幫浦（efflux pump） 
+ 
+18.有關streptococcal pyrogenic exotoxins 的敘述，下列何者最不適當？ 
+ 
+A.可引起猩紅熱（scarlet fever）及鏈球菌性毒性休克症候群 
+B.毒素基因可藉由質體傳播 
+C.為superantigens 
+D.為A 型鏈球菌的重要致病因子 
+ 
+19.類丹毒疾病主要是由下列何種細菌引起？ 
+ 
+A.Nocardia asteroides 
+B.Erysipelothrix rhusiopathiae 
+C.Streptococcus pyogenes 
+D.Listeria monocytogenes 
+ 
+20.下列何種試驗，最適合用於鑑別Enterococcus spp.與group D streptococci？ 
+ 
+A.L-pyrrolidonyl-β-naphthylamide 水解試驗 
+B.bacitracin 試驗 
+C.Lancefield's serogrouping 
+D.CAMP 試驗 
+ 
+21.有關methicillin-resistant Staphylococcus aureus（MRSA）偵測之敘述，下列何者最不適當？ 
+ 
+A.偵測MRSA 的chromogenic media 培養基通常會添加cefoxitin 
+B.可用latex agglutination 來偵測PBP2a 
+C.臨床上主要以immunochromatographic strip 來偵測MRSA 
+D.可偵測mecA 基因 
+22.有關分枝桿菌的敘述，下列何者最適當？ 
+ 
+A.利用16S rRNA 基因序列，可用以鑑定分枝桿菌 
+B.分枝桿菌為兼性厭氧菌 
+C.分枝桿菌分類於革蘭氏陰性菌 
+D.結核分枝桿菌生長速度約2 小時分裂一次 
+
+

@@ -1,0 +1,849 @@
+﻿commit a95bc369d5d55e804f8790521534e2a0e099fc4f
+Author: Naiho <naiho.cc@gmail.com>
+Date:   Sat Jun 13 22:10:56 2026 +0800
+
+    Feat: Add emoji progression to accuracy calculator and fix initial banner rendering
+
+diff --git a/app/public/app.js b/app/public/app.js
+index 68f3b10..c3868d1 100644
+--- a/app/public/app.js
++++ b/app/public/app.js
+@@ -1020,6 +1020,7 @@ function startPractice() {
+     progressFill.style.width = '0%';
+     
+     switchMode(currentMode);
++    updateAccuracy();
+ }
+ 
+ function switchView(viewName) {
+@@ -1409,10 +1410,22 @@ function updateAccuracy() {
+         total++;
+         if (answeredState[idx] && answeredState[idx].current_answer === currentActiveTopicData[idx].answer) correct++;
+     });
+-    if (total === 0) listAccuracy.textContent = "甇?Ⅱ?? --%";
+-    else {
++    if (total === 0) {
++        listAccuracy.textContent = "甇?Ⅱ?? --%";
++    } else {
+         const pct = Math.round((correct / total) * 100);
+-        listAccuracy.textContent = `甇?Ⅱ?? ${pct}% (${correct}/${total})`;
++        let emoji = '?丑';
++        if (pct >= 90) emoji = '??';
++        else if (pct >= 80) emoji = '??';
++        else if (pct >= 70) emoji = '??';
++        else if (pct >= 60) emoji = '??';
++        else if (pct >= 50) emoji = '??';
++        else if (pct >= 40) emoji = '??';
++        else if (pct >= 30) emoji = '?';
++        else if (pct >= 20) emoji = '?';
++        else if (pct >= 10) emoji = '?亢';
++        
++        listAccuracy.textContent = `${emoji} ${pct}% (${correct}/${total})`;
+     }
+ }
+ 
+
+commit afa73505ae9ef06654665b3fd631bc0c91d1018c
+Author: Naiho <naiho.cc@gmail.com>
+Date:   Sat Jun 13 21:38:26 2026 +0800
+
+    Fix UI: Ensure dropdown renders as flex column to force wrapping, and default multi-year checkboxes to all subjects if none selected
+
+diff --git a/app/public/app.js b/app/public/app.js
+index c234d0f..68f3b10 100644
+--- a/app/public/app.js
++++ b/app/public/app.js
+@@ -1957,10 +1957,9 @@ async function updateMultiYearCheckboxes() {
+     const yrWrap = document.getElementById('filter-year-wrapper');
+     if (yrWrap) yrWrap.style.display = 'block';
+     
+-    const selectedSubjects = Array.from(document.querySelectorAll('.multi-subject-cb:checked')).map(cb => cb.value);
++    let selectedSubjects = Array.from(document.querySelectorAll('.multi-subject-cb:checked')).map(cb => cb.value);
+     if (selectedSubjects.length === 0) {
+-        filterYearContainer.innerHTML = '<div style="color:var(--text-muted); font-size:12px;">隢??豢?蝘...</div>';
+-        return;
++        selectedSubjects = [...subjects];
+     }
+     
+     filterYearContainer.innerHTML = '<div style="color:var(--text-muted); font-size:12px;">頛撟港遢銝?..</div>';
+@@ -2196,7 +2195,8 @@ function toggleDropdown(dropdownId) {
+ 
+     // Toggle current
+     if (dropdown.style.display === 'none' || !dropdown.style.display) {
+-        dropdown.style.display = 'block';
++        dropdown.style.display = 'flex';
++        dropdown.style.flexDirection = 'column';
+     } else {
+         dropdown.style.display = 'none';
+     }
+
+commit a2026a4818bf623863d4c127668a8deb43fe847b
+Author: Naiho <naiho.cc@gmail.com>
+Date:   Sat Jun 13 20:57:57 2026 +0800
+
+    UI: Fix multi-subject layout via cache busting and fix multi-mode year selection logic
+
+diff --git a/app/public/app.js b/app/public/app.js
+index 800a369..c234d0f 100644
+--- a/app/public/app.js
++++ b/app/public/app.js
+@@ -1866,11 +1866,13 @@ function populateMultiSelect() {
+     const allCb = document.getElementById('multi-subject-all');
+     allCb.onchange = (e) => {
+         checkboxes.forEach(cb => cb.checked = e.target.checked);
++        updateMultiYearCheckboxes();
+         if (globalPracticeMode !== 'search') applyFilters();
+     };
+     checkboxes.forEach(cb => {
+         cb.onchange = () => {
+             allCb.checked = checkboxes.every(c => c.checked);
++            updateMultiYearCheckboxes();
+             if (globalPracticeMode !== 'search') applyFilters();
+         };
+     });
+@@ -2061,6 +2063,10 @@ function switchGlobalMode(mode) {
+     } else {
+         applyFilters();
+     }
++    
++    if (mode !== 'general') {
++        updateMultiYearCheckboxes();
++    }
+ }
+ 
+ if (modeGeneralBtn) modeGeneralBtn.onclick = () => switchGlobalMode('general');
+
+commit f39ea1a8ef60db05a5f8470f74956bf1ffba213c
+Author: Naiho <naiho.cc@gmail.com>
+Date:   Sat Jun 13 20:51:35 2026 +0800
+
+    UI: Refine dropdown texts and subject multi-select layout
+
+diff --git a/app/public/app.js b/app/public/app.js
+index 8b7c886..800a369 100644
+--- a/app/public/app.js
++++ b/app/public/app.js
+@@ -1849,7 +1849,7 @@ function populateMultiSelect() {
+     if (!filterSubjectMulti) return;
+     filterSubjectMulti.innerHTML = '';
+     const allOpt = document.createElement('label');
+-    allOpt.className = 'subject-multi-lbl';
++    allOpt.className = 'filter-dropdown-item';
+     allOpt.innerHTML = `<input type="checkbox" id="multi-subject-all"> <b>?券 / ?其???/b>`;
+     filterSubjectMulti.appendChild(allOpt);
+     
+@@ -1857,7 +1857,7 @@ function populateMultiSelect() {
+     const subjects = Array.from(filterSubject.options).map(o => o.value).filter(v => v);
+     subjects.forEach(sub => {
+         const lbl = document.createElement('label');
+-        lbl.className = 'subject-multi-lbl';
++        lbl.className = 'filter-dropdown-item';
+         lbl.innerHTML = `<input type="checkbox" class="multi-subject-cb" value="${sub}"> ${sub}`;
+         filterSubjectMulti.appendChild(lbl);
+         checkboxes.push(lbl.querySelector('input'));
+
+commit aaec3c56b4691533b84ab3faad6d146cfe611050
+Author: Naiho <naiho.cc@gmail.com>
+Date:   Sat Jun 13 17:26:59 2026 +0800
+
+    Fix list view answeredState comparison bug
+
+diff --git a/app/public/app.js b/app/public/app.js
+index 7dbdebc..8b7c886 100644
+--- a/app/public/app.js
++++ b/app/public/app.js
+@@ -1259,7 +1259,7 @@ function renderListView() {
+         q.choices.forEach((choice, i) => {
+             const letter = letters[i];
+             const hasAnswered = answeredState[idx] !== undefined;
+-            const isSelected = answeredState[idx] === letter;
++            const isSelected = answeredState[idx] && answeredState[idx].current_answer === letter;
+             const isCorrect = q.answer === letter;
+             
+             let extraClass = '';
+@@ -1407,7 +1407,7 @@ function updateAccuracy() {
+     let correct = 0;
+     Object.keys(answeredState).forEach(idx => {
+         total++;
+-        if (answeredState[idx] === currentActiveTopicData[idx].answer) correct++;
++        if (answeredState[idx] && answeredState[idx].current_answer === currentActiveTopicData[idx].answer) correct++;
+     });
+     if (total === 0) listAccuracy.textContent = "甇?Ⅱ?? --%";
+     else {
+
+commit 0d6ce04df18e0ed5ec2bd5acd5c4be52b0ba4a77
+Author: Naiho <naiho.cc@gmail.com>
+Date:   Sat Jun 13 17:04:02 2026 +0800
+
+    Fix literal string newline syntax errors introduced during ID logic update
+
+diff --git a/app/public/app.js b/app/public/app.js
+index fd016e6..7dbdebc 100644
+--- a/app/public/app.js
++++ b/app/public/app.js
+@@ -1539,7 +1539,8 @@ window.openImageUploadModal = function(exam_id, no, year) {
+     const pdfUrl = '/pdf/' + filterSubject.value + '_merge.pdf';
+     window.open(pdfUrl, '_blank');
+     
+-    document.getElementById('upload-modal-exam-id').value = exam_id;\n    document.getElementById('upload-modal-year').value = year || '';
++    document.getElementById('upload-modal-exam-id').value = exam_id;
++    document.getElementById('upload-modal-year').value = year || '';
+     document.getElementById('upload-modal-no').value = no;
+     document.getElementById('image-upload-modal').style.display = 'flex';
+ };
+@@ -1552,7 +1553,8 @@ window.uploadImage = async function() {
+     
+     const formData = new FormData();
+     formData.append('subject', filterSubject.value);
+-    formData.append('exam_id', exam_id);\n        formData.append('year', document.getElementById('upload-modal-year').value);
++    formData.append('exam_id', exam_id);
++    formData.append('year', document.getElementById('upload-modal-year').value);
+     formData.append('no', no);
+     formData.append('file', fileInput.files[0]);
+     
+@@ -1612,7 +1614,8 @@ window.resetImage = async function() {
+             headers: {'Content-Type': 'application/json'},
+             body: JSON.stringify({
+                 subject: filterSubject.value,
+-                exam_id: parseInt(exam_id),\n                year: document.getElementById('upload-modal-year').value,
++                exam_id: parseInt(exam_id),
++                year: document.getElementById('upload-modal-year').value,
+                 no: parseInt(no)
+             })
+         });
+@@ -1725,7 +1728,7 @@ window.resetImage = async function() {
+     const res = await fetch('/api/reset_image', {
+         method: 'POST',
+         headers: { 'Content-Type': 'application/json' },
+-        body: JSON.stringify({ subject: filterSubject.value, exam_id: parseInt(exam_id),\n                year: document.getElementById('upload-modal-year').value, no: parseInt(no) })
++        body: JSON.stringify({ subject: filterSubject.value, exam_id: parseInt(exam_id), year: document.getElementById('upload-modal-year').value, no: parseInt(no) })
+     });
+     const d = await res.json();
+     if (d.status === 'success') {
+
+commit e6fa12ac8ec1ded67cd7d046f1a984f7da87c9a9
+Author: Naiho <naiho.cc@gmail.com>
+Date:   Sat Jun 13 16:59:19 2026 +0800
+
+    Fix question ID collisions across years by including year in the ID generation logic
+
+diff --git a/app/public/app.js b/app/public/app.js
+index e94f9a0..fd016e6 100644
+--- a/app/public/app.js
++++ b/app/public/app.js
+@@ -40,14 +40,14 @@ function getSubStore(q) {
+ }
+ 
+ function getAnswerState(q) {
+-    const id = q.exam_id + '_' + q.no;
++    const id = q.year + '_' + q.exam_id + '_' + q.no;
+     const store = getSubStore(q);
+     if (!store.answers) store.answers = {};
+     return store.answers[id];
+ }
+ 
+ function setAnswerState(q, state) {
+-    const id = q.exam_id + '_' + q.no;
++    const id = q.year + '_' + q.exam_id + '_' + q.no;
+     const sub = q.subject || currentActiveSubject;
+     const store = getSubStore(q);
+     if (!store.answers) store.answers = {};
+@@ -56,14 +56,14 @@ function setAnswerState(q, state) {
+ }
+ 
+ function getBookmarkState(q) {
+-    const id = q.exam_id + '_' + q.no;
++    const id = q.year + '_' + q.exam_id + '_' + q.no;
+     const store = getSubStore(q);
+     if (!store.bookmarks) store.bookmarks = [];
+     return store.bookmarks.includes(id);
+ }
+ 
+ function setBookmarkState(q, isBookmarked) {
+-    const id = q.exam_id + '_' + q.no;
++    const id = q.year + '_' + q.exam_id + '_' + q.no;
+     const sub = q.subject || currentActiveSubject;
+     const store = getSubStore(q);
+     if (!store.bookmarks) store.bookmarks = [];
+@@ -77,14 +77,14 @@ function setBookmarkState(q, isBookmarked) {
+ }
+ 
+ function getExplanationState(q) {
+-    const id = q.exam_id + '_' + q.no;
++    const id = q.year + '_' + q.exam_id + '_' + q.no;
+     const store = getSubStore(q);
+     if (!store.explanations) store.explanations = {};
+     return store.explanations[id];
+ }
+ 
+ function setExplanationState(q, val) {
+-    const id = q.exam_id + '_' + q.no;
++    const id = q.year + '_' + q.exam_id + '_' + q.no;
+     const sub = q.subject || currentActiveSubject;
+     const store = getSubStore(q);
+     if (!store.explanations) store.explanations = {};
+@@ -93,7 +93,7 @@ function setExplanationState(q, val) {
+ }
+ 
+ function getCustomTagIncludes(q, tag) {
+-    const id = q.exam_id + '_' + q.no;
++    const id = q.year + '_' + q.exam_id + '_' + q.no;
+     const store = getSubStore(q);
+     if (!store.customTags) store.customTags = {};
+     if (!store.customTags[tag]) return false;
+@@ -101,7 +101,7 @@ function getCustomTagIncludes(q, tag) {
+ }
+ 
+ function addCustomTagState(q, tag) {
+-    const id = q.exam_id + '_' + q.no;
++    const id = q.year + '_' + q.exam_id + '_' + q.no;
+     const sub = q.subject || currentActiveSubject;
+     const store = getSubStore(q);
+     if (!store.customTags) store.customTags = {};
+@@ -115,7 +115,7 @@ function addCustomTagState(q, tag) {
+ }
+ 
+ function removeCustomTagState(q, tag) {
+-    const id = q.exam_id + '_' + q.no;
++    const id = q.year + '_' + q.exam_id + '_' + q.no;
+     const sub = q.subject || currentActiveSubject;
+     const store = getSubStore(q);
+     if (!store.customTags) store.customTags = {};
+@@ -398,7 +398,7 @@ async function init() {
+                             headers: { 'Content-Type': 'application/json' },
+                             body: JSON.stringify({
+                                 subject: filterSubject.value,
+-                                questions: [{exam_id: targetQ.exam_id, no: targetQ.no}],
++                                questions: [{exam_id: targetQ.exam_id, no: targetQ.no, year: targetQ.year}],
+                                 tag: selection
+                             })
+                         });
+@@ -652,7 +652,7 @@ async function applyFilters() {
+                 // Check custom tags (Union logic)
+                 let hasTag = false;
+                 if (checkedTags.length > 0) {
+-                    const id = q.exam_id + '_' + q.no;
++                    const id = q.year + '_' + q.exam_id + '_' + q.no;
+                     const subStore = getSubStore(q);
+                     for (let tag of checkedTags) {
+                         if (subStore.customTags && subStore.customTags[tag] && subStore.customTags[tag].includes(id)) {
+@@ -713,7 +713,7 @@ function renderTopicList() {
+     // Completion Meter logic
+     let correctCount = 0;
+     filteredData.forEach(q => {
+-        const id = q.exam_id + '_' + q.no;
++        const id = q.year + '_' + q.exam_id + '_' + q.no;
+         const ans = getAnswerState(q);
+         if (ans && ans.current_answer === q.answer) {
+             correctCount++;
+@@ -1010,7 +1010,7 @@ function startPractice() {
+     
+     if (globalMode === 'general') {
+         currentActiveTopicData.forEach((q, i) => {
+-            const id = q.exam_id + '_' + q.no;
++            const id = q.year + '_' + q.exam_id + '_' + q.no;
+             if (getAnswerState(q)) {
+                 answeredState[i] = getAnswerState(q);
+             }
+@@ -1111,7 +1111,7 @@ function renderCardView() {
+         const isBookmarked = getBookmarkState(q);
+         starBtn.className = isBookmarked ? 'star-icon active' : 'star-icon';
+         starBtn.textContent = isBookmarked ? '?? : '??;
+-        starBtn.onclick = (e) => toggleBookmark(e, q.exam_id, q.no);
++        starBtn.onclick = (e) => toggleBookmark(e, q.exam_id, q.no, q.year);
+     }
+     
+     qTags.innerHTML = '';
+@@ -1154,7 +1154,7 @@ function renderCardView() {
+             if (!isSelected && isCorrect) div.classList.add('correct');
+         } else {
+             div.onclick = () => {
+-                const qid = q.exam_id + '_' + q.no;
++                const qid = q.year + '_' + q.exam_id + '_' + q.no;
+                 let state = getAnswerState(q);
+                 if (!state) {
+                     state = { first_answer: letter, current_answer: letter, is_fixed: false };
+@@ -1195,28 +1195,28 @@ function renderCardView() {
+                         if (getCustomTagIncludes(q, t)) {
+                             html += `<span class="badge" style="background:#8b5cf6; color:white; position:relative; cursor:pointer;" onmouseover="this.querySelector('.del-tag').style.display='inline'" onmouseout="this.querySelector('.del-tag').style.display='none'">
+                                 ?儭?${t}
+-                                <span class="del-tag" style="display:none; margin-left:4px; font-weight:bold; color:#ffb3b3;" onclick="removeCustomTagFromQ('${t}', '${q.exam_id}', '${q.no}')">??/span>
++                                <span class="del-tag" style="display:none; margin-left:4px; font-weight:bold; color:#ffb3b3;" onclick="removeCustomTagFromQ('${t}', '${q.exam_id}', '${q.no}', '${q.year}')">??/span>
+                             </span>`;
+                         }
+                     }
+                     return html;
+                 })()}
+-                <input type="text" class="manual-tag-input" placeholder="?啣?璅惜..." onkeypress="if(event.key==='Enter') { window.addManualCustomTag('${q.exam_id}', '${q.no}', this.value); this.value=''; }">
++                <input type="text" class="manual-tag-input" placeholder="?啣?璅惜..." onkeypress="if(event.key==='Enter') { window.addManualCustomTag('${q.exam_id}', '${q.no}', '${q.year}', this.value); this.value=''; }">
+             </div>
+             
+             <div style="display:flex; justify-content:flex-end; align-items:center; margin-bottom:8px;">
+-                <button class="btn btn-secondary btn-small" onclick="openImageUploadModal('${q.exam_id}', '${q.no}')">?? 靽格??</button>
++                <button class="btn btn-secondary btn-small" onclick="openImageUploadModal('${q.exam_id}', '${q.no}', '${q.year}')">?? 靽格??</button>
+             </div>
+             
+-            <div id="md-preview-card-${q.exam_id}-${q.no}" class="markdown-body" style="background:var(--bg-lighter); padding:12px; border-radius:6px; min-height:60px;">${marked.parse(userExp || '*撠蝑?*')}</div>
+-            <div id="md-editor-card-${q.exam_id}-${q.no}" style="display:none; margin-top:8px;">
+-                <textarea id="user-exp-card-${q.exam_id}-${q.no}" style="width:100%; height:150px; background:var(--bg-lighter); color:var(--text-main); border:1px solid var(--glass-border); padding:8px; border-radius:6px; resize:vertical;">${userExp}</textarea>
++            <div id="md-preview-card-${q.year}-${q.exam_id}-${q.no}" class="markdown-body" style="background:var(--bg-lighter); padding:12px; border-radius:6px; min-height:60px;">${marked.parse(userExp || '*撠蝑?*')}</div>
++            <div id="md-editor-card-${q.year}-${q.exam_id}-${q.no}" style="display:none; margin-top:8px;">
++                <textarea id="user-exp-card-${q.year}-${q.exam_id}-${q.no}" style="width:100%; height:150px; background:var(--bg-lighter); color:var(--text-main); border:1px solid var(--glass-border); padding:8px; border-radius:6px; resize:vertical;">${userExp}</textarea>
+                 <div style="text-align:right; margin-top:8px;">
+-                    <button class="btn btn-primary btn-small" onclick="saveUserExplanation('${q.exam_id}', '${q.no}', document.getElementById('user-exp-card-${q.exam_id}-${q.no}').value); toggleMarkdownEdit('card-${q.exam_id}-${q.no}'); document.getElementById('md-preview-card-${q.exam_id}-${q.no}').innerHTML = marked.parse(document.getElementById('user-exp-card-${q.exam_id}-${q.no}').value || '*撠蝑?*');">?脣?蝑?</button>
++                    <button class="btn btn-primary btn-small" onclick="saveUserExplanation('${q.exam_id}', '${q.no}', '${q.year}', document.getElementById('user-exp-card-${q.year}-${q.exam_id}-${q.no}').value); toggleMarkdownEdit('card-${q.year}-${q.exam_id}-${q.no}'); document.getElementById('md-preview-card-${q.year}-${q.exam_id}-${q.no}').innerHTML = marked.parse(document.getElementById('user-exp-card-${q.year}-${q.exam_id}-${q.no}').value || '*撠蝑?*');">?脣?蝑?</button>
+                 </div>
+             </div>
+             <div style="text-align:right; margin-top:8px;">
+-                <button class="btn btn-secondary btn-small" onclick="toggleMarkdownEdit('card-${q.exam_id}-${q.no}')">?? 蝺刻摩蝑?</button>
++                <button class="btn btn-secondary btn-small" onclick="toggleMarkdownEdit('card-${q.year}-${q.exam_id}-${q.no}')">?? 蝺刻摩蝑?</button>
+             </div>
+         `;
+     } else {
+@@ -1285,7 +1285,7 @@ function renderListView() {
+             <div class="list-card-main">
+                 <div class="list-card-header">
+                     <span class="badge" style="margin:0;">Q ${idx + 1} / ${currentActiveTopicData.length}</span>
+-                    <span style="cursor:pointer; font-size:18px; color:#facc15; margin-left:8px;" onclick="toggleBookmark(event, '${q.exam_id}', '${q.no}')">
++                    <span style="cursor:pointer; font-size:18px; color:#facc15; margin-left:8px;" onclick="toggleBookmark(event, '${q.exam_id}', '${q.no}', '${q.year}')">
+                         ${getBookmarkState(q) ? '?? : '??}
+                     </span>
+ 
+@@ -1305,28 +1305,28 @@ function renderListView() {
+                                 if (getCustomTagIncludes(q, t)) {
+                                     html += `<span class="badge" style="background:#8b5cf6; color:white; position:relative; cursor:pointer;" onmouseover="this.querySelector('.del-tag').style.display='inline'" onmouseout="this.querySelector('.del-tag').style.display='none'">
+                                         ?儭?${t}
+-                                        <span class="del-tag" style="display:none; margin-left:4px; font-weight:bold; color:#ffb3b3;" onclick="removeCustomTagFromQ('${t}', '${q.exam_id}', '${q.no}')">??/span>
++                                        <span class="del-tag" style="display:none; margin-left:4px; font-weight:bold; color:#ffb3b3;" onclick="removeCustomTagFromQ('${t}', '${q.exam_id}', '${q.no}', '${q.year}')">??/span>
+                                     </span>`;
+                                 }
+                             }
+                             return html;
+                         })()}
+-                        <input type="text" class="manual-tag-input" placeholder="?啣?璅惜..." onkeypress="if(event.key==='Enter') { window.addManualCustomTag('${q.exam_id}', '${q.no}', this.value); this.value=''; }">
++                        <input type="text" class="manual-tag-input" placeholder="?啣?璅惜..." onkeypress="if(event.key==='Enter') { window.addManualCustomTag('${q.exam_id}', '${q.no}', '${q.year}', this.value); this.value=''; }">
+                     </div>
+                     
+                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                         <div style="font-weight:bold; color:var(--accent);">甇?Ⅱ閫??嚗?{q.answer}</div>
+-                        <button class="btn btn-secondary btn-small" onclick="openImageUploadModal('${q.exam_id}', '${q.no}')">?? 靽格??</button>
++                        <button class="btn btn-secondary btn-small" onclick="openImageUploadModal('${q.exam_id}', '${q.no}', '${q.year}')">?? 靽格??</button>
+                     </div>
+-                    <div id="md-preview-list-${q.exam_id}-${q.no}" class="markdown-body" style="background:var(--bg-lighter); padding:12px; border-radius:6px; min-height:60px;">${marked.parse(getExplanationState(q) || q.explanation || '*撠蝑?*')}</div>
+-                    <div id="md-editor-list-${q.exam_id}-${q.no}" style="display:none; margin-top:8px;">
+-                        <textarea id="user-exp-list-${q.exam_id}-${q.no}" style="width:100%; height:80px; background:var(--bg-lighter); color:var(--text-main); border:1px solid var(--glass-border); padding:8px; border-radius:6px; resize:vertical;">${getExplanationState(q) || q.explanation || ''}</textarea>
++                    <div id="md-preview-list-${q.year}-${q.exam_id}-${q.no}" class="markdown-body" style="background:var(--bg-lighter); padding:12px; border-radius:6px; min-height:60px;">${marked.parse(getExplanationState(q) || q.explanation || '*撠蝑?*')}</div>
++                    <div id="md-editor-list-${q.year}-${q.exam_id}-${q.no}" style="display:none; margin-top:8px;">
++                        <textarea id="user-exp-list-${q.year}-${q.exam_id}-${q.no}" style="width:100%; height:80px; background:var(--bg-lighter); color:var(--text-main); border:1px solid var(--glass-border); padding:8px; border-radius:6px; resize:vertical;">${getExplanationState(q) || q.explanation || ''}</textarea>
+                         <div style="text-align:right; margin-top:8px;">
+-                            <button class="btn btn-primary btn-small" onclick="saveUserExplanation('${q.exam_id}', '${q.no}', document.getElementById('user-exp-list-${q.exam_id}-${q.no}').value); toggleMarkdownEdit('list-${q.exam_id}-${q.no}'); document.getElementById('md-preview-list-${q.exam_id}-${q.no}').innerHTML = marked.parse(document.getElementById('user-exp-list-${q.exam_id}-${q.no}').value || '*撠蝑?*');">?脣?蝑?</button>
++                            <button class="btn btn-primary btn-small" onclick="saveUserExplanation('${q.exam_id}', '${q.no}', '${q.year}', document.getElementById('user-exp-list-${q.year}-${q.exam_id}-${q.no}').value); toggleMarkdownEdit('list-${q.year}-${q.exam_id}-${q.no}'); document.getElementById('md-preview-list-${q.year}-${q.exam_id}-${q.no}').innerHTML = marked.parse(document.getElementById('user-exp-list-${q.year}-${q.exam_id}-${q.no}').value || '*撠蝑?*');">?脣?蝑?</button>
+                         </div>
+                     </div>
+                     <div style="text-align:right; margin-top:8px;">
+-                        <button class="btn btn-secondary btn-small" onclick="toggleMarkdownEdit('list-${q.exam_id}-${q.no}')">?? 蝺刻摩蝑?</button>
++                        <button class="btn btn-secondary btn-small" onclick="toggleMarkdownEdit('list-${q.year}-${q.exam_id}-${q.no}')">?? 蝺刻摩蝑?</button>
+                     </div>
+                 </div>
+                 
+@@ -1351,7 +1351,7 @@ function renderListView() {
+ window.selectListOption = function(idx, selectedLetter, correctLetter) {
+     if (answeredState[idx] !== undefined) return;
+     
+-    const qid = currentActiveTopicData[idx].exam_id + '_' + currentActiveTopicData[idx].no;
++    const qid = currentActiveTopicData[idx].year + '_' + currentActiveTopicData[idx].exam_id + '_' + currentActiveTopicData[idx].no;
+     let q = currentActiveTopicData[idx];
+     let state = getAnswerState(q);
+     if (!state) {
+@@ -1452,7 +1452,7 @@ async function saveAdvancedSearch() {
+     currentData.forEach(q => {
+         const text = q.question + " " + q.choices.join(" ");
+         if (rx.test(text)) {
+-            matchedQs.push({exam_id: q.exam_id, no: q.no});
++            matchedQs.push({exam_id: q.exam_id, no: q.no, year: q.year});
+         }
+     });
+ 
+@@ -1461,7 +1461,7 @@ async function saveAdvancedSearch() {
+             // Add to Custom Tags instead of global JSON
+             if (!globalCustomTags[tagName]) globalCustomTags[tagName] = [];
+             matchedQs.forEach(mq => {
+-                const id = mq.exam_id + '_' + mq.no;
++                const id = mq.year + '_' + mq.exam_id + '_' + mq.no;
+                 if (!globalCustomTags[tagName].includes(id)) {
+                     globalCustomTags[tagName].push(id);
+                 }
+@@ -1484,7 +1484,7 @@ async function saveAdvancedSearch() {
+             // Switch to list view with matched questions
+             let matchedQuestionsObjects = [];
+             currentData.forEach(q => {
+-                if (matchedQs.some(mq => mq.exam_id === q.exam_id && mq.no === q.no)) {
++                if (matchedQs.some(mq => mq.exam_id === q.exam_id && mq.no === q.no && mq.year === q.year)) {
+                     matchedQuestionsObjects.push(q);
+                 }
+             });
+@@ -1504,10 +1504,10 @@ async function saveAdvancedSearch() {
+ init();
+ 
+ 
+-window.toggleBookmark = function(e, exam_id, no) {
++window.toggleBookmark = function(e, exam_id, no, year) {
+     e.stopPropagation();
+     
+-    const id = exam_id + '_' + no;
++    const id = year + '_' + exam_id + '_' + no;
+     const idx = globalBookmarks.indexOf(id);
+     if (idx > -1) globalBookmarks.splice(idx, 1);
+     else globalBookmarks.push(id);
+@@ -1518,8 +1518,8 @@ window.toggleBookmark = function(e, exam_id, no) {
+ 
+ 
+ 
+-window.removeCustomTagFromQ = function(tag, exam_id, no) {
+-    const q = currentData.find(x => x.exam_id == exam_id && x.no == no) || currentActiveTopicData.find(x => x.exam_id == exam_id && x.no == no);
++window.removeCustomTagFromQ = function(tag, exam_id, no, year) {
++    const q = currentData.find(x => x.exam_id == exam_id && x.no == no && x.year == year && x.year == year) || currentActiveTopicData.find(x => x.exam_id == exam_id && x.no == no && x.year == year && x.year == year);
+     if (!q) return;
+     removeCustomTagState(q, tag);
+     saveProgress();
+@@ -1528,18 +1528,18 @@ window.removeCustomTagFromQ = function(tag, exam_id, no) {
+     else renderListView();
+ };
+ 
+-window.saveUserExplanation = function(exam_id, no, val) {
+-    const id = exam_id + '_' + no;
++window.saveUserExplanation = function(exam_id, no, year, val) {
++    const id = year + '_' + exam_id + '_' + no;
+     globalExplanations[id] = val;
+     saveProgress();
+     alert('蝑?撌脣摮?);
+ };
+ 
+-window.openImageUploadModal = function(exam_id, no) {
++window.openImageUploadModal = function(exam_id, no, year) {
+     const pdfUrl = '/pdf/' + filterSubject.value + '_merge.pdf';
+     window.open(pdfUrl, '_blank');
+     
+-    document.getElementById('upload-modal-exam-id').value = exam_id;
++    document.getElementById('upload-modal-exam-id').value = exam_id;\n    document.getElementById('upload-modal-year').value = year || '';
+     document.getElementById('upload-modal-no').value = no;
+     document.getElementById('image-upload-modal').style.display = 'flex';
+ };
+@@ -1552,7 +1552,7 @@ window.uploadImage = async function() {
+     
+     const formData = new FormData();
+     formData.append('subject', filterSubject.value);
+-    formData.append('exam_id', exam_id);
++    formData.append('exam_id', exam_id);\n        formData.append('year', document.getElementById('upload-modal-year').value);
+     formData.append('no', no);
+     formData.append('file', fileInput.files[0]);
+     
+@@ -1566,7 +1566,7 @@ window.uploadImage = async function() {
+             alert('??撌脫?堆?隢??啗??乩誑?亦??啣???);
+             document.getElementById('image-upload-modal').style.display = 'none';
+             // update in current data array too
+-            const q = currentData.find(x => x.exam_id == exam_id && x.no == no);
++            const q = currentData.find(x => x.exam_id == exam_id && x.no == no && x.year == year && x.year == year);
+             if (q) q.images = [d.image_url];
+             if (currentMode === 'card') renderCardView();
+             else renderListView();
+@@ -1612,7 +1612,7 @@ window.resetImage = async function() {
+             headers: {'Content-Type': 'application/json'},
+             body: JSON.stringify({
+                 subject: filterSubject.value,
+-                exam_id: parseInt(exam_id),
++                exam_id: parseInt(exam_id),\n                year: document.getElementById('upload-modal-year').value,
+                 no: parseInt(no)
+             })
+         });
+@@ -1620,7 +1620,7 @@ window.resetImage = async function() {
+         if (d.status === 'success') {
+             alert(d.message || '撌脣?敺拙?憪???');
+             document.getElementById('image-upload-modal').style.display = 'none';
+-            const q = currentData.find(x => x.exam_id == exam_id && x.no == no);
++            const q = currentData.find(x => x.exam_id == exam_id && x.no == no && x.year == year && x.year == year);
+             if (q) q.images = d.images;
+             if (currentMode === 'card') renderCardView();
+             else renderListView();
+@@ -1630,11 +1630,11 @@ window.resetImage = async function() {
+     }
+ };
+ 
+-window.addManualTag = function(exam_id, no) {
++window.addManualTag = function(exam_id, no, year) {
+     const input = document.getElementById(`manual-tag-${exam_id}-${no}`);
+     const tag = input.value.trim();
+     if (!tag) return;
+-    const q = currentData.find(x => x.exam_id == exam_id && x.no == no) || currentActiveTopicData.find(x => x.exam_id == exam_id && x.no == no);
++    const q = currentData.find(x => x.exam_id == exam_id && x.no == no && x.year == year && x.year == year) || currentActiveTopicData.find(x => x.exam_id == exam_id && x.no == no && x.year == year && x.year == year);
+     if (!q) return;
+     addCustomTagState(q, tag);
+     saveProgress();
+@@ -1694,10 +1694,10 @@ window.toggleEditTopicNote = function() {
+ };
+ 
+ 
+-window.addManualCustomTag = function(exam_id, no, val) {
++window.addManualCustomTag = function(exam_id, no, year, val) {
+     val = val.trim();
+     if (!val) return;
+-    const q = currentData.find(x => x.exam_id == exam_id && x.no == no) || currentActiveTopicData.find(x => x.exam_id == exam_id && x.no == no);
++    const q = currentData.find(x => x.exam_id == exam_id && x.no == no && x.year == year && x.year == year) || currentActiveTopicData.find(x => x.exam_id == exam_id && x.no == no && x.year == year && x.year == year);
+     if (!q) return;
+     addCustomTagState(q, val);
+     saveProgress();
+@@ -1725,13 +1725,13 @@ window.resetImage = async function() {
+     const res = await fetch('/api/reset_image', {
+         method: 'POST',
+         headers: { 'Content-Type': 'application/json' },
+-        body: JSON.stringify({ subject: filterSubject.value, exam_id: parseInt(exam_id), no: parseInt(no) })
++        body: JSON.stringify({ subject: filterSubject.value, exam_id: parseInt(exam_id),\n                year: document.getElementById('upload-modal-year').value, no: parseInt(no) })
+     });
+     const d = await res.json();
+     if (d.status === 'success') {
+         alert('??撌脤???');
+         document.getElementById('image-upload-modal').style.display = 'none';
+-        const q = currentData.find(x => x.exam_id == exam_id && x.no == no);
++        const q = currentData.find(x => x.exam_id == exam_id && x.no == no && x.year == year && x.year == year);
+         if (q) q.images = d.images;
+         if (currentMode === 'card') renderCardView();
+         else renderListView();
+@@ -1917,7 +1917,7 @@ async function executeMultiModePractice() {
+         const bookmarks = sData.bookmarks || [];
+         
+         subQuestions.forEach(q => {
+-            const id = q.exam_id + '_' + q.no;
++            const id = q.year + '_' + q.exam_id + '_' + q.no;
+             q.subject = sub; // Inject subject!
+             
+             if (globalPracticeMode === 'wrong') {
+@@ -2152,7 +2152,7 @@ if (btnBatchTag) {
+         
+         let count = 0;
+         currentActiveTopicData.forEach(q => {
+-            const id = q.exam_id + '_' + q.no;
++            const id = q.year + '_' + q.exam_id + '_' + q.no;
+             const subStore = getSubStore(q);
+             if (!subStore.customTags) subStore.customTags = {};
+             if (!subStore.customTags[tag]) subStore.customTags[tag] = [];
+
+commit 291e68f774664e21549e857e28ad4a73cb958198
+Author: Naiho <naiho.cc@gmail.com>
+Date:   Sat Jun 13 16:36:04 2026 +0800
+
+    Change clear save slot buttons to a manage saves button that opens file explorer
+
+diff --git a/app/public/app.js b/app/public/app.js
+index 951aadb..e94f9a0 100644
+--- a/app/public/app.js
++++ b/app/public/app.js
+@@ -209,17 +209,16 @@ function loadSubjectState(sub) {
+     }
+ }
+ 
+-window.resetSlot = function(slot) {
+-    if (confirm(`蝣箏?閬?蝛箏?瑼?${slot} ??甇文?雿瘜儔??`)) {
+-        localStorage.removeItem('save_slot_' + slot);
+-        if (currentSaveSlot === slot) {
+-            globalAnsweredState = {}; globalBookmarks = []; globalCustomTags = {}; globalExplanations = {};
+-            renderCustomTagsCheckboxes();
+-    if (currentMode === 'card') renderCardView();
+-    else renderListView();
+-            if (filterSubject.value) applyFilters();
++window.openSavesFolder = async function() {
++    try {
++        const res = await fetch('/api/open_saves_folder', { method: 'POST' });
++        if (!res.ok) {
++            console.error("Failed to open saves folder.");
++            alert("?⊥???摮?鞈?憭橘?隢Ⅱ隤?蝡舀?行迤?典銵?);
+         }
+-        loadSlotUI();
++    } catch (e) {
++        console.error(e);
++        alert("?⊥?????啣?蝡舫???瑼??冗??);
+     }
+ };
+ 
+
+commit 16fb39dcf5bb041c3c2c5512ffa974e25c199bdf
+Author: Naiho <naiho.cc@gmail.com>
+Date:   Sat Jun 13 16:25:54 2026 +0800
+
+    Fix globalPracticeMode check to prevent auto-search and disable initial search on entering search mode
+
+diff --git a/app/public/app.js b/app/public/app.js
+index f5289f5..951aadb 100644
+--- a/app/public/app.js
++++ b/app/public/app.js
+@@ -526,7 +526,7 @@ async function onSubjectChange() {
+         selectAllLbl.querySelector('input').addEventListener('change', (e) => {
+             const isChecked = e.target.checked;
+             document.querySelectorAll('.year-checkbox').forEach(cb => { cb.checked = isChecked; });
+-            if (currentMode !== 'search') applyFilters();
++            if (globalPracticeMode !== 'search') applyFilters();
+         });
+         filterYearContainer.appendChild(selectAllLbl);
+ 
+@@ -539,7 +539,7 @@ async function onSubjectChange() {
+             lbl.querySelector('input').addEventListener('change', () => {
+                 const allChecked = Array.from(document.querySelectorAll('.year-checkbox')).every(cb => cb.checked);
+                 document.getElementById('year-select-all').checked = allChecked;
+-                if (globalMode !== 'search') applyFilters();
++                if (globalPracticeMode !== 'search') applyFilters();
+             });
+             filterYearContainer.appendChild(lbl);
+         });
+@@ -1833,7 +1833,7 @@ function renderCustomTagsCheckboxes() {
+         cb.type = 'checkbox';
+         cb.value = tag;
+         cb.className = 'custom-tag-cb';
+-        cb.onchange = () => { if (currentMode !== 'search') applyFilters(); };
++        cb.onchange = () => { if (globalPracticeMode !== 'search') applyFilters(); };
+         
+         lbl.appendChild(cb);
+         lbl.appendChild(document.createTextNode('?儭?' + tag));
+@@ -1864,12 +1864,12 @@ function populateMultiSelect() {
+     const allCb = document.getElementById('multi-subject-all');
+     allCb.onchange = (e) => {
+         checkboxes.forEach(cb => cb.checked = e.target.checked);
+-        if (currentMode !== 'search') applyFilters();
++        if (globalPracticeMode !== 'search') applyFilters();
+     };
+     checkboxes.forEach(cb => {
+         cb.onchange = () => {
+             allCb.checked = checkboxes.every(c => c.checked);
+-            if (currentMode !== 'search') applyFilters();
++            if (globalPracticeMode !== 'search') applyFilters();
+         };
+     });
+ }
+@@ -1990,7 +1990,7 @@ async function updateMultiYearCheckboxes() {
+     selectAllLbl.querySelector('input').addEventListener('change', (e) => {
+         const isChecked = e.target.checked;
+         document.querySelectorAll('.year-checkbox').forEach(cb => { cb.checked = isChecked; });
+-        if (currentMode !== 'search') applyFilters();
++        if (globalPracticeMode !== 'search') applyFilters();
+     });
+     filterYearContainer.appendChild(selectAllLbl);
+ 
+@@ -2006,7 +2006,7 @@ async function updateMultiYearCheckboxes() {
+             const allChecked = Array.from(document.querySelectorAll('.year-checkbox')).every(cb => cb.checked);
+             const selectAll = document.getElementById('year-select-all-multi');
+             if(selectAll) selectAll.checked = allChecked;
+-            if (currentMode !== 'search') applyFilters();
++            if (globalPracticeMode !== 'search') applyFilters();
+         });
+         filterYearContainer.appendChild(lbl);
+     });
+@@ -2051,10 +2051,14 @@ function switchGlobalMode(mode) {
+         if (mode === 'search') renderCustomTagsCheckboxes();
+     }
+     
+-    // Hide the big h1 title ??everything is in the breadcrumb now
+     currentSubjectTitle.style.display = 'none';
+     
+-    applyFilters();
++    if (mode === 'search') {
++        filteredData = [];
++        renderListView(); // Just render empty list, waiting for user to click Search
++    } else {
++        applyFilters();
++    }
+ }
+ 
+ if (modeGeneralBtn) modeGeneralBtn.onclick = () => switchGlobalMode('general');
+
+commit b0f22031fbd5fc46df98545ea4f328db125b16ac
+Author: Naiho <naiho.cc@gmail.com>
+Date:   Sat Jun 13 16:18:21 2026 +0800
+
+    Fix search mode performance issue by adding explicit search button
+
+diff --git a/app/public/app.js b/app/public/app.js
+index c7a7ee4..f5289f5 100644
+--- a/app/public/app.js
++++ b/app/public/app.js
+@@ -526,7 +526,7 @@ async function onSubjectChange() {
+         selectAllLbl.querySelector('input').addEventListener('change', (e) => {
+             const isChecked = e.target.checked;
+             document.querySelectorAll('.year-checkbox').forEach(cb => { cb.checked = isChecked; });
+-            applyFilters();
++            if (currentMode !== 'search') applyFilters();
+         });
+         filterYearContainer.appendChild(selectAllLbl);
+ 
+@@ -539,7 +539,7 @@ async function onSubjectChange() {
+             lbl.querySelector('input').addEventListener('change', () => {
+                 const allChecked = Array.from(document.querySelectorAll('.year-checkbox')).every(cb => cb.checked);
+                 document.getElementById('year-select-all').checked = allChecked;
+-                applyFilters();
++                if (globalMode !== 'search') applyFilters();
+             });
+             filterYearContainer.appendChild(lbl);
+         });
+@@ -1833,7 +1833,7 @@ function renderCustomTagsCheckboxes() {
+         cb.type = 'checkbox';
+         cb.value = tag;
+         cb.className = 'custom-tag-cb';
+-        cb.onchange = () => applyFilters();
++        cb.onchange = () => { if (currentMode !== 'search') applyFilters(); };
+         
+         lbl.appendChild(cb);
+         lbl.appendChild(document.createTextNode('?儭?' + tag));
+@@ -1864,12 +1864,12 @@ function populateMultiSelect() {
+     const allCb = document.getElementById('multi-subject-all');
+     allCb.onchange = (e) => {
+         checkboxes.forEach(cb => cb.checked = e.target.checked);
+-        applyFilters();
++        if (currentMode !== 'search') applyFilters();
+     };
+     checkboxes.forEach(cb => {
+         cb.onchange = () => {
+             allCb.checked = checkboxes.every(c => c.checked);
+-            applyFilters();
++            if (currentMode !== 'search') applyFilters();
+         };
+     });
+ }
+@@ -1990,7 +1990,7 @@ async function updateMultiYearCheckboxes() {
+     selectAllLbl.querySelector('input').addEventListener('change', (e) => {
+         const isChecked = e.target.checked;
+         document.querySelectorAll('.year-checkbox').forEach(cb => { cb.checked = isChecked; });
+-        applyFilters();
++        if (currentMode !== 'search') applyFilters();
+     });
+     filterYearContainer.appendChild(selectAllLbl);
+ 
+@@ -2006,7 +2006,7 @@ async function updateMultiYearCheckboxes() {
+             const allChecked = Array.from(document.querySelectorAll('.year-checkbox')).every(cb => cb.checked);
+             const selectAll = document.getElementById('year-select-all-multi');
+             if(selectAll) selectAll.checked = allChecked;
+-            applyFilters();
++            if (currentMode !== 'search') applyFilters();
+         });
+         filterYearContainer.appendChild(lbl);
+     });
+@@ -2125,6 +2125,22 @@ if (regexInput) {
+     });
+ }
+ 
++const btnSearchExecute = document.getElementById('btn-search-execute');
++if (btnSearchExecute) {
++    btnSearchExecute.addEventListener('click', () => {
++        const val = regexInput ? regexInput.value.trim() : '';
++        if (val) {
++            const history = JSON.parse(localStorage.getItem('regexHistory') || '[]');
++            if (!history.includes(val)) {
++                history.unshift(val);
++                if (history.length > 20) history.pop();
++                localStorage.setItem('regexHistory', JSON.stringify(history));
++            }
++        }
++        applyFilters();
++    });
++}
++
+ if (btnBatchTag) {
+     btnBatchTag.onclick = () => {
+         const tag = batchTagInput.value.trim();
+
