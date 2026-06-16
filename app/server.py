@@ -1,4 +1,4 @@
-﻿import os
+import os
 import sys
 import subprocess
 import json
@@ -315,14 +315,14 @@ def update_correct_answer(update: AnswerUpdate):
     return {"status": "error", "message": "Question not found"}
 
 
-pdf_dir = "../歷屆考題"
-if os.path.exists(pdf_dir):
-    app.mount("/pdf", StaticFiles(directory=pdf_dir), name="pdf")
-else:
-    print(f"Warning: PDF directory {pdf_dir} not found. PDF viewing will be disabled.")
 app.mount("/", StaticFiles(directory="public", html=True), name="public")
+
+import threading
+import webbrowser
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8080)
+    # Open browser slightly after server starts
+    threading.Timer(1.5, lambda: webbrowser.open("http://127.0.0.1:8080/")).start()
+    uvicorn.run(app, host="127.0.0.1", port=8080)
 

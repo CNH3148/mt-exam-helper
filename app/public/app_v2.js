@@ -18,7 +18,7 @@ let currentIndex = 0;
 let isPdfViewActive = false;
 
 let currentSaveSlot = null;
-let globalAnsweredState = {}; // { id: { first_answer: 'A', current_answer: 'B', is_fixed: false } }
+let globalAnsweredState = {}; // { id: { current_answer: 'B', is_fixed: false } }
 let globalBookmarks = []; // [ "id1", "id2" ]
 let globalCustomTags = {}; // { "tag_name": ["id1", "id2"] }
 let globalExplanations = {};
@@ -247,7 +247,6 @@ function loadSubjectState(sub) {
     for (let k in globalAnsweredState) {
         if (typeof globalAnsweredState[k] === 'string') {
             globalAnsweredState[k] = {
-                first_answer: globalAnsweredState[k],
                 current_answer: globalAnsweredState[k],
                 is_fixed: false
             };
@@ -1313,7 +1312,7 @@ function renderCardView(preservePdfMode = false) {
                 const qid = q.year + '_' + q.exam_id + '_' + q.no;
                 let state = getAnswerState(q);
                 if (!state) {
-                    state = { first_answer: letter, current_answer: letter, is_fixed: false };
+                    state = { current_answer: letter, is_fixed: false };
                 } else {
                     state.current_answer = letter;
                 }
@@ -1566,7 +1565,7 @@ window.selectListOption = function(idx, selectedLetter) {
     let q = currentActiveTopicData[idx];
     let state = getAnswerState(q);
     if (!state) {
-        state = { first_answer: selectedLetter, current_answer: selectedLetter, is_fixed: false };
+        state = { current_answer: selectedLetter, is_fixed: false };
     } else {
         state.current_answer = selectedLetter;
     }
