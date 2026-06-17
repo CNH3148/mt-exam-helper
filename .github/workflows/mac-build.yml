@@ -39,13 +39,8 @@ jobs:
           chmod +x Mac_Release/Start_App.command
           chmod +x Mac_Release/app/server
           
-      - name: Zip Release
-        run: |
-          cd Mac_Release
-          zip -r ../Mac免安裝版.zip ./*
-          
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: Mac免安裝版
-          path: Mac免安裝版.zip
+          path: Mac_Release/
