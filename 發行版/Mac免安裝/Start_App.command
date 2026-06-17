@@ -2,18 +2,19 @@
 cd "$(dirname "$0")/app"
 
 echo "========================================================"
-echo "        MT Exam Prep - Release Version 2.0 (Mac ??"
+echo "        MT Exam Prep - Release Version 2.0 (Mac 版)"
 echo "========================================================"
 echo ""
 
-# 瑼Ｘ?臬撌脩?蝺刻陌??server ?瑁?瑼?if [ -f "./server" ]; then
-    echo "甇???隡箸???.."
-    echo "?? Ctrl+C ??湔????蝡舀?閬??喳?迫隡箸??具?
+# 檢查是否已經編譯過 server 執行檔
+if [ -f "./server" ]; then
+    echo "正在啟動伺服器..."
+    echo "按下 Ctrl+C 或者是關閉這個黑色終端機視窗即可安全停止伺服器。"
     echo ""
     ./server
 else
-    echo "?隤扎銝蝺刻陌憟賜?隡箸??典銵? (server)嚗?
-    echo "隢????瑁?憭惜??compile_mac.command 靘脰?蝺刻陌蝔???
+    echo "【錯誤】找不到伺服器執行檔 (app/server)！"
+    echo "請確認您下載的是完整的 Mac 免安裝版，且沒有誤刪檔案。"
     echo ""
-    read -p "??Enter ?萇???.."
+    read -p "按 Enter 鍵退出..."
 fi
