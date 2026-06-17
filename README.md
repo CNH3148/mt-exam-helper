@@ -75,14 +75,14 @@ cd ~/Desktop && curl -L -o temp_exam_mac.zip "https://github.com/CNH3148/mt-exam
 - **Google Gemini API 使用費**：約 **NT$ 2,883.72**
 - 此費用主要用於百萬字級別的考題 PDF 轉換、選項萃取與答案驗證。
 
-![Gemini API Spend](./GeminiAPIspend.png)
+![Gemini API Spend](./assets/GeminiAPIspend.png)
 
 ---
 
 ## 🧠 系統設計想法 (Design Thoughts)
 
 > 💡 **想了解本系統的技術細節與開發歷史？**
-> 本專案經歷了從資料清洗、伺服器建置到 UI 優化的完整過程，如果您對程式碼架構或開發歷史感興趣，歡迎參閱 [技術細節與開發歷史 (DEVELOPMENT.md)](./DEVELOPMENT.md)。
+> 本專案經歷了從資料清洗、伺服器建置到 UI 優化的完整過程，如果您對程式碼架構或開發歷史感興趣，歡迎參閱 [技術細節與開發歷史 (DEVELOPMENT.md)](./docs/DEVELOPMENT.md)。
 
 > *(作者保留區塊：之後將補上開發這個醫檢師刷題系統的初衷、遇到的痛點，以及未來可能的擴充計畫等心得。)*
 
