@@ -1026,6 +1026,14 @@ function openTopicDetail(topicName) {
         detailTopicDesc.appendChild(keyConceptsList);
     }
 
+    // Populate topic notes from globalTopicNotes
+    const noteKey = filterSubject.value + '_' + topicName;
+    const existingNote = globalTopicNotes[noteKey] || '';
+    const textarea = document.getElementById('topic-note-input');
+    const preview = document.getElementById('topic-md-preview');
+    if (textarea) textarea.value = existingNote;
+    if (preview) preview.innerHTML = existingNote ? safeMarkdown(existingNote) : '*尚無筆記*';
+
     switchView('topic-detail');
 }
 
