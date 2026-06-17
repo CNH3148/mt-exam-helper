@@ -4,38 +4,48 @@
 
 ---
 
-## ⚡ Windows 快速一鍵安裝 (推薦)
+## ⚡ 快速一鍵安裝 (推薦)
 
-如果您是第一次使用，或想把這個系統分享給同學，請直接使用這段指令。它會自動從 GitHub 下載最新版的系統，並解壓縮到您的桌面上，完全不需要手動操作！
+如果您是第一次使用，或想把這個系統分享給同學，請直接使用這段指令。它會自動從 GitHub 下載最新版的系統，並自動在您的桌面上解壓縮、甚至繞過安全阻擋，完全不需要繁瑣的手動操作！
 
-**步驟：**
+### 🪟 Windows 使用者
 1. 在 Windows 的「開始」按鈕按右鍵，選擇 **Windows PowerShell**（或終端機）。
 2. 將以下整段指令複製，貼上到黑色/藍色視窗中，並按下 `Enter` 鍵。
 
 ```powershell
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; $desk = [Environment]::GetFolderPath('Desktop'); $url = "https://github.com/CNH3148/mt-exam-helper/releases/download/v2.0.115-2/MT_Exam_Prep_Portable_v2.0_115-2_Windows.zip"; $zip = "$desk\temp_exam.zip"; iwr -Uri $url -OutFile $zip; Expand-Archive -Path $zip -DestinationPath "$desk\醫檢師刷題系統" -Force; rm $zip
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; $desk = [Environment]::GetFolderPath('Desktop'); $url = "https://github.com/CNH3148/mt-exam-helper/releases/download/v2.1.115-2/MT_Exam_Prep_Portable_v2.1.115-2_Windows.zip"; $zip = "$desk\temp_exam.zip"; iwr -Uri $url -OutFile $zip; Expand-Archive -Path $zip -DestinationPath "$desk\醫檢師刷題系統_Windows" -Force; rm $zip
 ```
-*(執行完畢後，您的桌面上就會出現一個名為「醫檢師刷題系統」的資料夾，點擊裡面的 `Start_App.bat` 即可開始刷題！)*
+*(執行完畢後，桌面會出現「醫檢師刷題系統_Windows」資料夾，點擊裡面的 `Start_App.bat` 即可開始刷題！)*
+
+### 🍎 Mac 使用者 (Beta 版)
+1. 按下 `Command + 空白鍵` 搜尋並打開 **「終端機 (Terminal)」**。
+2. 將以下整段指令複製，貼上到終端機視窗中，並按下 `Enter` 鍵。
+
+```bash
+cd ~/Desktop && curl -L -o temp_exam_mac.zip "https://github.com/CNH3148/mt-exam-helper/releases/download/v2.1.115-2/Mac免安裝版.zip" && unzip -q temp_exam_mac.zip -d 醫檢師刷題系統_Mac && rm temp_exam_mac.zip && xattr -cr 醫檢師刷題系統_Mac
+```
+*(這段指令會自動下載並為您解除 Mac 的 Gatekeeper 隔離機制。執行完畢後，桌面會出現「醫檢師刷題系統_Mac」資料夾，點擊裡面的 `Start_App.command` 即可開始刷題！)*
 
 ---
 
 ## 📂 手動下載與解壓縮 (替代方案)
 
-如果您不習慣使用指令，或是電腦環境不允許執行 PowerShell，您也可以手動下載安裝：
+如果您不習慣使用指令，或是電腦環境不允許執行終端機，您也可以手動下載安裝：
 
 1. 前往本專案右側的 **Releases** 頁面。
-2. 找到最新版本，點擊下方 Assets 中的 `MT_Exam_Prep_Portable_v2.0_115-2_Windows.zip` 進行下載。
-3. 下載完成後，對該壓縮檔 **按右鍵 -> 解壓縮全部...**。
+2. 找到最新版本，依照您的作業系統下載對應的壓縮檔（Windows 請下載 `MT_Exam_Prep_Portable..._Windows.zip`；Mac 請下載 `Mac免安裝版.zip`）。
+3. 下載完成後，將壓縮檔 **解壓縮**。
 4. 將解壓縮出來的資料夾放到桌面或隨身碟中。
-5. 進入資料夾，雙擊執行 `Start_App.bat` 即可開始刷題！
+5. **Windows**：進入資料夾，雙擊執行 `Start_App.bat` 即可開始刷題。
+6. **Mac**：若手動下載，首次開啟可能遇到蘋果的 Gatekeeper 阻擋，請開啟終端機執行 `xattr -cr ` 然後把資料夾拖進去按 Enter 解除隔離，之後雙擊 `Start_App.command` 即可執行。（詳細圖文教學請見資料夾內的 `Mac使用說明.md`）
 
 ---
 
 ## 💻 系統需求與支援平台
 
-- **作業系統**：目前 **僅支援 Windows 10/11 (64-bit)**。
-- **硬體需求**：幾乎所有能上網的 Windows 電腦皆可順暢執行。
-- ⚠️ **暫不支援 Mac 與行動裝置**：受限於當前綠色便攜版的封裝架構，目前尚無法在 macOS 或手機/平板上運行。（未來若有時間規劃，將優先嘗試製作 Mac 免安裝版，後續再研究行動裝置的支援方案）。
+- **作業系統**：支援 **Windows 10/11 (64-bit)** 與 **macOS**。
+- **硬體需求**：幾乎所有能上網的電腦皆可順暢執行。
+- ⚠️ **暫不支援行動裝置**：目前尚無法在手機/平板上以本機伺服器模式運行。（未來若有時間將再研究行動裝置的支援方案）。
 
 ---
 
