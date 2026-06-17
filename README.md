@@ -22,7 +22,7 @@
 2. 將以下整段指令複製，貼上到終端機視窗中，並按下 `Enter` 鍵。
 
 ```bash
-cd ~/Desktop && curl -L -o temp_exam_mac.zip "https://github.com/CNH3148/mt-exam-helper/releases/download/v2.1.115-2/Mac免安裝版.zip" && unzip -q temp_exam_mac.zip -d 醫檢師刷題系統_Mac && rm temp_exam_mac.zip && xattr -cr 醫檢師刷題系統_Mac
+cd ~/Desktop && curl -L -o temp_exam_mac.zip "https://github.com/CNH3148/mt-exam-helper/releases/download/v2.1.115-2/MT_Exam_Prep_Portable_v2.1.115-2_Mac-Beta.zip" && unzip -q temp_exam_mac.zip -d 醫檢師刷題系統_Mac && rm temp_exam_mac.zip && xattr -cr 醫檢師刷題系統_Mac
 ```
 *(這段指令會自動下載並為您解除 Mac 的 Gatekeeper 隔離機制。執行完畢後，桌面會出現「醫檢師刷題系統_Mac」資料夾，點擊裡面的 `Start_App.command` 即可開始刷題！)*
 
@@ -33,7 +33,7 @@ cd ~/Desktop && curl -L -o temp_exam_mac.zip "https://github.com/CNH3148/mt-exam
 如果您不習慣使用指令，或是電腦環境不允許執行終端機，您也可以手動下載安裝：
 
 1. 前往本專案右側的 **Releases** 頁面。
-2. 找到最新版本，依照您的作業系統下載對應的壓縮檔（Windows 請下載 `MT_Exam_Prep_Portable..._Windows.zip`；Mac 請下載 `Mac免安裝版.zip`）。
+2. 找到最新版本，依照您的作業系統下載對應的壓縮檔（Windows 請下載 `MT_Exam_Prep_Portable_v2.1.115-2_Windows.zip`；Mac 請下載 `MT_Exam_Prep_Portable_v2.1.115-2_Mac-Beta.zip`）。
 3. 下載完成後，將壓縮檔 **解壓縮**。
 4. 將解壓縮出來的資料夾放到桌面或隨身碟中。
 5. **Windows**：進入資料夾，雙擊執行 `Start_App.bat` 即可開始刷題。
