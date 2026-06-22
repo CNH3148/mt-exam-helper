@@ -13,7 +13,7 @@
 2. 將以下整段指令複製，貼上到黑色/藍色視窗中，並按下 `Enter` 鍵。
 
 ```powershell
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; $desk = [Environment]::GetFolderPath('Desktop'); $url = "https://github.com/CNH3148/mt-exam-helper/releases/download/v3.0.115-2/MT_Exam_Prep_Portable_v3.0.115-2_Windows.zip"; $zip = "$desk\temp_exam.zip"; iwr -Uri $url -OutFile $zip; Expand-Archive -Path $zip -DestinationPath "$desk\醫檢師刷題系統_Windows" -Force; rm $zip
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; $desk = [Environment]::GetFolderPath('Desktop'); $url = "https://github.com/CNH3148/mt-exam-helper/releases/download/v4.0.115-2/MT_Exam_helper_v4.0.115-2_WindowsPortable.zip"; $zip = "$desk\temp_exam.zip"; iwr -Uri $url -OutFile $zip; Expand-Archive -Path $zip -DestinationPath "$desk\醫檢師刷題小幫手_Windows" -Force; rm $zip
 ```
 *(執行完畢後，桌面會出現「醫檢師刷題系統_Windows」資料夾，點擊裡面的 `Start_App.bat` 即可開始刷題！)*
 
