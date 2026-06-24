@@ -25,7 +25,7 @@
 2. 將以下整段指令複製，貼上到視窗中並按下 `Enter` 鍵：
 
 ```Bash
-cd ~/Desktop && URL=$(curl -s [https://api.github.com/repos/CNH3148/mt-exam-helper/releases/latest](https://api.github.com/repos/CNH3148/mt-exam-helper/releases/latest) | grep "browser_download_url" | grep -i "Mac" | cut -d '"' -f 4 | head -n 1) && curl -L -o temp_exam_mac.zip "$URL" && unzip -q temp_exam_mac.zip -d 醫檢師刷題系統_Mac && rm temp_exam_mac.zip && xattr -cr 醫檢師刷題系統_Mac
+cd ~/Desktop && URL=$(curl -s "https://api.github.com/repos/CNH3148/mt-exam-helper/releases/latest" | grep "browser_download_url" | grep -i "Mac" | cut -d '"' -f 4 | head -n 1) && curl -L -o temp_exam_mac.zip "$URL" && unzip -q temp_exam_mac.zip -d 醫檢師刷題系統_Mac && rm temp_exam_mac.zip && xattr -cr 醫檢師刷題系統_Mac
 ```
 
 > 執行完畢後，桌面會出現「**醫檢師刷題系統_Mac**」資料夾，進入並雙擊 `Start_App.command` 即可開始刷題！（此指令已自動為您解除 Mac 煩人的隔離機制）
