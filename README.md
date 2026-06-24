@@ -13,7 +13,7 @@
 2. 將以下整段指令複製，貼上到視窗中並按下 `Enter` 鍵：
 
 ```powershell
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; $api = "[https://api.github.com/repos/CNH3148/mt-exam-helper/releases/latest](https://api.github.com/repos/CNH3148/mt-exam-helper/releases/latest)"; $url = (Invoke-RestMethod $api).assets | Where-Object name -match 'Windows.*\.zip$' | Select-Object -ExpandProperty browser_download_url; $desk = [Environment]::GetFolderPath('Desktop'); $zip = "$desk\temp_exam.zip"; iwr -Uri $url -OutFile $zip; Expand-Archive -Path $zip -DestinationPath "$desk\醫檢師刷題小幫手_Windows" -Force; rm $zip
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; $api = "https://api.github.com/repos/CNH3148/mt-exam-helper/releases/latest"; $url = (Invoke-RestMethod $api).assets | Where-Object name -match 'Windows.*\.zip$' | Select-Object -ExpandProperty browser_download_url; $desk = [Environment]::GetFolderPath('Desktop'); $zip = "$desk\temp_exam.zip"; iwr -Uri $url -OutFile $zip; Expand-Archive -Path $zip -DestinationPath "$desk\醫檢師刷題小幫手_Windows" -Force; rm $zip
 ```
 
 > 執行完畢後，桌面會出現「**醫檢師刷題小幫手_Windows**」資料夾，進入並雙擊 `Start_App.bat` 即可開始刷題！
