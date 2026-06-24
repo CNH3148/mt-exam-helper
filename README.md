@@ -4,7 +4,7 @@
 
 ---
 
-## ⚡ 快速一鍵安裝 (推薦)
+## 快速一鍵安裝 (推薦)
 
 只需複製以下指令並執行，系統將會**自動為您下載最新版本**、在桌面解壓縮，並處理好所有安全權限，完全不需手動操作！
 
@@ -16,7 +16,7 @@
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; $api = "[https://api.github.com/repos/CNH3148/mt-exam-helper/releases/latest](https://api.github.com/repos/CNH3148/mt-exam-helper/releases/latest)"; $url = (Invoke-RestMethod $api).assets | Where-Object name -match 'Windows.*\.zip$' | Select-Object -ExpandProperty browser_download_url; $desk = [Environment]::GetFolderPath('Desktop'); $zip = "$desk\temp_exam.zip"; iwr -Uri $url -OutFile $zip; Expand-Archive -Path $zip -DestinationPath "$desk\醫檢師刷題小幫手_Windows" -Force; rm $zip
 ```
 
-> 💡 執行完畢後，桌面會出現「**醫檢師刷題小幫手_Windows**」資料夾，進入並雙擊 `Start_App.bat` 即可開始刷題！
+> 執行完畢後，桌面會出現「**醫檢師刷題小幫手_Windows**」資料夾，進入並雙擊 `Start_App.bat` 即可開始刷題！
 
 ### 🍎 Mac 使用者 (Beta 版)
 
@@ -28,7 +28,7 @@
 cd ~/Desktop && URL=$(curl -s [https://api.github.com/repos/CNH3148/mt-exam-helper/releases/latest](https://api.github.com/repos/CNH3148/mt-exam-helper/releases/latest) | grep "browser_download_url" | grep -i "Mac" | cut -d '"' -f 4 | head -n 1) && curl -L -o temp_exam_mac.zip "$URL" && unzip -q temp_exam_mac.zip -d 醫檢師刷題系統_Mac && rm temp_exam_mac.zip && xattr -cr 醫檢師刷題系統_Mac
 ```
 
-> 💡 執行完畢後，桌面會出現「**醫檢師刷題系統_Mac**」資料夾，進入並雙擊 `Start_App.command` 即可開始刷題！（此指令已自動為您解除 Mac 煩人的隔離機制）
+> 執行完畢後，桌面會出現「**醫檢師刷題系統_Mac**」資料夾，進入並雙擊 `Start_App.command` 即可開始刷題！（此指令已自動為您解除 Mac 煩人的隔離機制）
 
 ## 📂 手動下載 (替代方案)
 
